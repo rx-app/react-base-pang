@@ -10,6 +10,13 @@ class XiaojiejieItem extends Component{
         );
     }
     handleClick(){
+        // this.props.index= 0;
+        // this.props.deleteEvent(this.props.index) //这样写报错,props接收到的值不可以直接修改
+
+        // let a = this.props.index;
+        // a=0
+        // this.props.deleteEvent(a)     //这样写可以
+
         this.props.deleteEvent(this.props.index)
     }
 }
