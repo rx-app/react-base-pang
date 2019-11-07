@@ -10,7 +10,7 @@ class XiaojiejieItem extends Component{
         );
     }
     handleClick(){
-        console.log(this.props.index)
+        this.props.deleteEvent(this.props.index)
     }
 }
 
