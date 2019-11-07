@@ -1,42 +1,48 @@
 import React, { Component } from 'react'
+import XiaojiejieItem from './XiaojiejieItem'
 
 class Xiaojiejie extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state={
-            inputValue:'初级',
-            list:['基础','高级'],
+        this.state = {
+            inputValue: '初级',
+            list: ['基础', '高级','终极'],
         }
         // this.inputChange = this.inputChange.bind(this)
     }
     render() {
         return (
             <div>
-                <div><input value={this.state.inputValue} onChange={this.inputChange.bind(this)} /> <button onClick={this.addList.bind(this)} > 增加服务 </button></div>
+                <div>
+                    <input value={this.state.inputValue} onChange={this.inputChange.bind(this)} /> 
+                    <button onClick={this.addList.bind(this)} > 增加服务 </button>
+                </div>
                 <ul>
                     {
-                        this.state.list.map( (item,index)=> {
-                          return  <li onClick={this.deleteItem.bind(this,index)}>{item}</li>
+                        this.state.list.map((item, index) => {
+                            return (
+                                    <XiaojiejieItem index={index} key={index+item} content={item} />
+                            )
                         })
                     }
                 </ul>
             </div>
         )
     }
-    inputChange(e){
-        this.setState({inputValue:e.target.value})
+    inputChange(e) {
+        this.setState({ inputValue: e.target.value })
         console.log(e.target.value)
     }
-    addList(){
+    addList() {
         this.setState({
-            list:[...this.state.list,this.state.inputValue]
+            list: [...this.state.list, this.state.inputValue]
         })
     }
-    deleteItem(index){
+    deleteItem(index) {
         let list = this.state.list
-        list.splice(index,1)
+        list.splice(index, 1)
         this.setState({
-            list:list
+            list: list
         })
     }
 }
