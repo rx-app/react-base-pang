@@ -1,4 +1,6 @@
 import React, { Component } from 'react'; 
+import PropTypes from 'prop-types'
+
 class XiaojiejieItem extends Component{
     constructor(props){
         super(props)
@@ -19,6 +21,12 @@ class XiaojiejieItem extends Component{
 
         this.props.deleteEvent(this.props.index)
     }
+}
+
+XiaojiejieItem.propTypes = { //这里的propTypes开头的p是小写的
+    content:PropTypes.string,
+    deleteEvent:PropTypes.func,
+    index:PropTypes.number,
 }
 
 export default XiaojiejieItem;
