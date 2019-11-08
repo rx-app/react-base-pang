@@ -14,10 +14,10 @@ class Xiaojiejie extends Component {
         return (
             <div>
                 <div>
-                    <input value={this.state.inputValue} onChange={this.inputChange.bind(this)} /> 
+                    <input value={this.state.inputValue} ref={ r=>this.input=r } onChange={this.inputChange.bind(this)} /> 
                     <button onClick={this.addList.bind(this)} > 增加服务 </button>
                 </div>
-                <ul>
+                <ul ref={r=>this.$ul=r}>
                     {
                         this.state.list.map((item, index) => {
                             return (
@@ -30,13 +30,17 @@ class Xiaojiejie extends Component {
         )
     }
     inputChange(e) {
-        this.setState({ inputValue: e.target.value })
+        this.setState({ inputValue: this.input.value })
         console.log(e.target.value)
     }
     addList() {
         this.setState({
             list: [...this.state.list, this.state.inputValue]
+        },()=>{
+            console.log(this.$ul.querySelectorAll('div').length)  //正确写法
         })
+        // console.log(this.$ul.querySelectorAll('div').length)  //错误的写法
+        
     }
     deleteItem(index) {
         let list = this.state.list
